@@ -10,7 +10,6 @@ from visualize import draw_map
 # Phase 2: Unsupervised Learning #
 ##################################
 
-
 def find_closest(location, centroids):
     """Return the centroid in centroids that is closest to location. If
     multiple centroids are equally close, return the first one.
@@ -18,11 +17,19 @@ def find_closest(location, centroids):
     >>> find_closest([3.0, 4.0], [[0.0, 0.0], [2.0, 3.0], [4.0, 3.0], [5.0, 5.0]])
     [2.0, 3.0]
     """
-    # BEGIN Question 3
-    l_x = location[0]
-    l_y = location[1]
-    return min(((l_x - centroids[i][0]) + (l_y - centroids[i][1]))**(1/2) for centroids[i] in centroids
 
+    # min_dist = 10000
+    # center = None
+    # for centroid in centroids:
+    #     dist = distance(location, centroid)
+    #     if dist < min_dist:
+    #         min_dist = dist
+    #         center = centroid
+    # return center
+
+
+    # BEGIN Question 3
+    return min(map(lambda x: (distance(location, x), x), centroids), key=lambda x: x[0])[1]
     # END Question 3
 
 
@@ -53,7 +60,7 @@ def group_by_centroid(restaurants, centroids):
     # BEGIN Question 4
     cluster = []
     for restaurant in restaurants:
-        cluster += [find_closest(restaurant_location(restaurant), centroids]
+        cluster += [find_closest(restaurant_location(restaurant), centroids)]
     return cluster
     # END Question 4
 

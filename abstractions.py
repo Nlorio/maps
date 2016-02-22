@@ -111,5 +111,6 @@ def restaurant_mean_rating(restaurant):
     """Return the average rating for restaurant."""
     # BEGIN Question 2
     rating = restaurant_ratings(restaurant)
-    return sum(rating) / len(rating)
+    return mean(rating)
+    #return sum(rating) / len(rating)
     # END Question 2
